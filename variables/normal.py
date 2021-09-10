@@ -1,3 +1,11 @@
+class Normal:
+    def __init__(self, valor) -> None:
+        self._valor = valor
+    
+    @property
+    def valor(self):
+        return self._valor
 
-def normal()->float:
-    return 0
+    @valor.setter
+    def valor():
+        pass
