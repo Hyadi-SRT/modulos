@@ -8,20 +8,9 @@ class Normal:
         self.force = f
         self.angle = a
 
- 
-    def display(self):
-        print(str(self.force)+ " " + str(self.angle))
-
     @classmethod
     def push_force(self):
-        return self.force * math.cos(self.aGrados(self.angle))
-
-    @classmethod
-    def aGrados(self, radianes):
-        return (math.pi * radianes) / 180
-
+        return self.force * math.cos(math.degrees(self.angle))
 
 norm = Normal(250, 50)
-print (norm.display())
-print(norm.aGrados(50))
 print(norm.push_force())
