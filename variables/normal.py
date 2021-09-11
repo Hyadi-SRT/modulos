@@ -1,16 +1,12 @@
 import math
 
 class Normal:
-    force = 0
-    angle = 0
+	def __init__(self, force, angle):
+		self.force = force
+		self.angle = angle
 
-    def __init__(self, f, a):
-        self.force = f
-        self.angle = a
+	def calcula_fuerza_pendiente(self):
+		return self.force * math.cos(math.degrees(self.angle));
 
-    @classmethod
-    def push_force(self):
-        return self.force * math.cos(math.degrees(self.angle))
-
-norm = Normal(250, 50)
-print(norm.push_force())
+time = Normal(24, 5.1)
+print(str(time.calcula_fuerza_pendiente()))
