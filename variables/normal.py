@@ -6,7 +6,7 @@ class Normal:
 		self.angle = angle
 
 	def calcula_fuerza_pendiente(self):
-		return self.force * math.cos(math.degrees(self.angle));
+		return self.force * math.cos(math.radians(self.angle));
 
 time = Normal(24, 5.1)
 print(str(time.calcula_fuerza_pendiente()))
