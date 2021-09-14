@@ -5,5 +5,5 @@ class drag_ventilacion:
         self.drag = drag
 
     def drag_coefficient(self):
-        self.drag/(self.dinamic_pressure * drag_area)
+        self.drag/(self.dinamic_pressure * self.drag_area)
 
