@@ -34,9 +34,6 @@ class ComponenteElectrico(Componente):
     @corriente.setter
     def corriente(self, value):
         self._corriente = value
-    
-    def potencia(self):
-        return self._corriente*self._voltaje
 
 
 class ComponenteMecanico(Componente):
@@ -46,6 +43,9 @@ class ComponenteMecanico(Componente):
 class Motor(ComponenteElectrico):
     def __init__(self) -> None:
         super().__init__()
+        
+    def potencia(self):
+        return self._corriente*self._voltaje
         
 class Auto:
     def __init__(self) -> None:
