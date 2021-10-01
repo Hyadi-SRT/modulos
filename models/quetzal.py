@@ -1,5 +1,4 @@
 
-
 class Componente:
     def __init__(self) -> None:
         self._temperatura = 0
@@ -40,6 +39,10 @@ class ComponenteMecanico(Componente):
     def __init__(self) -> None:
         super().__init__()
 
+class ComponenteMeteorologico(Componente):
+    def __init__(self) -> None:
+        super().__init__()
+
 class Motor(ComponenteElectrico):
     def __init__(self) -> None:
         super().__init__()
@@ -48,9 +51,10 @@ class Motor(ComponenteElectrico):
         return self._corriente*self._voltaje
         
 class Auto:
-    def __init__(self) -> None:
+    def __init__(self, masa = 600.0) -> None:
         self._velocidad = 0
         self._distancia = 0
+        self._masa = masa
     
     @property
     def velocidad(self):
@@ -67,3 +71,8 @@ class Auto:
     @distancia.setter
     def distancia(self,value):
         self._distancia=value
+
+    @property
+    def weight(self):
+        return self._masa*9.81
+    
