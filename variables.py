@@ -1,145 +1,86 @@
-from math import radians, cos
+from math import radians, cos, sin
 
-class Normal:
-    def __init__(self):
-	    self._force = 0
-	    self._angle = 0
+def normal(angle, force):
+    angle = radians(angle)
+    return force*cos(angle)
 
-    @property
-    def value(self):
-        #Regresa la fuerza multiplicada por el coseno del angulo
+def weight_x(angle, force):
+    angle = radians(angle)
+    return force*sin(angle)
 
-        return self._force*cos(self._angle)
+def tractive_force(torque, radio):
+    return torque*radio
 
-    @property
-    def angle(self):
-        return self._angle
-    
-    @angle.setter
-    def angle(self, value):
-        #Conviere el angulo a radianes y lo guarda
-        #Esto suponiendo que nos llega el angulo en grados, debido a que 
-        #math.cos() requiere angulos en radianes
-        self._angle = radians(value)
+def dynamic_pressure(density, relative_velocity):
+    return (density * relative_velocity**2)/2
 
-    @property
-    def force(self) -> float:
-        return self._force
-    
-    @force.setter
-    def force(self, value):
-        #Recibe una fuerza en newtons y se guardan
-        self._force = value
+def lift_force(drag_area, dynamic_pressure, clift_coeficient):
+    return  drag_area*dynamic_pressure*clift_coeficient
 
-    
-
+def pitch_moment(drag_area, dynamic_pressure, coefficient, Lw):
+    return drag_area*dynamic_pressure*coefficient*Lw
 
 class RollingResistance:
     def __init__(self):
         self._total = 0
         self._coefficient = 0
 
-    @property
     def coefficient(self) -> float:
         #Retorna un flotante como el valor del coeficiente de rolling resistance
         return self._coefficient
 
-    @coefficient.setter
-    def coefficient(self, args : tuple) -> None:
+    def make_coefficient(self,static_force, moment_valent_force, velocity) -> None:
         # Calcula el coeficiente de Rolling Resistance y lo coloca
         # Recibe una sola tupla con 3 valores
         # -staticForce
         # -moment_valent_force
         # -velocity
+        self._coefficient = static_force + (moment_valent_force*velocity)
 
-        staticForce, moment_valent_force, velocity = args
-        self._coefficient = staticForce + (moment_valent_force*velocity)
-
-    @property
-    def total(self) -> float:
-        #Retorna un flotante como valor del Rolling Resistance total
-
-        return self._total
-    
-    @total.setter
     def total(self, normal : float) -> None:
         # Calcula el valor del Rolling Resistance total
         # Recibe un argumento (el valor de la normal)
-        self._total = self.coefficient * normal
-
-class DynamicPressure:
-    def __init__(self) -> None:
-        self._density = 0
-        self._relative_velocity = 0
-        self._value = 0
-    
-    @property
-    def value(self) -> float:
-        return (self._density * self._relative_velocity**2)/2
-    
-    @property
-    def density(self):
-        return self._density
-    
-    @density.setter
-    def density(self, value):
-        self._density = value
-    
-    @property
-    def relative_velocity(self):
-        return self._relative_velocity
-
-    @relative_velocity.setter
-    def relative_velocity(self, value):
-        self._relative_velocity = value
+        return self._coefficient * normal
     
 class DragForce:
-    def __init__(self, dp:DynamicPressure) -> None:
+    def __init__(self) -> None:
         self._coefficient = 0
-        self._area = 0
-        self._dynamic_pressure = dp.value
     
-    @property
-    def value(self):
-        return self._coefficient*self._area*self._dynamic_pressure
+    def value(self, dynamic_presure:float, area: float):
+        return self._coefficient*area*dynamic_presure
     
-    @property
     def coefficient(self):
         return self._coefficient
-    @coefficient.setter
-    def coefficient(self, value):
+
+    def make_coefficient(self, value):
         self._coefficient = value
 
-    @property
-    def area(self):
-        return self._area
-    @area.setter
-    def area(self, value):
-        self._area = value
 
 
 if __name__ == '__main__':
-    normal = Normal()
-    normal.angle=5.71
-    normal.force=3558.4
 
     rollin = RollingResistance()
 
-    rollin.coefficient = (0.00252,3.14e-5,40)
+    rollin.make_coefficient(0.00252,3.14e-5,40)
     
-    rollin.total = normal.value
+    n = normal(-3, 3558.4)
+    w_x= weight_x(-3, 3558.4)
 
-    print(f"Rolling coefficient = {rollin.coefficient}")
-    print(f"Rolling resistance = {rollin.total}")
-    print(f"Normal = {normal.value}")
+    print(f"Rolling coefficient = {rollin.coefficient()}")
+    print(f"Rolling resistance = {rollin.total(n)}")
+    print(f"Normal = {n}")
+    print(f"W en x: {w_x}")
 
-    dp = DynamicPressure()
-    dp.density=1.25
-    dp.relative_velocity=15
+    dp = dynamic_pressure(1.25, 15)
 
-    drag = DragForce(dp)
+    drag = DragForce()
 
-    drag.area=0.11
-    drag.coefficient=1
+    area=0.11
+    drag.make_coefficient(1)
 
-    print(drag.value)
+    print(dp)
+    print(f"Drag value: {drag.value(dp, area)}")
+    dp=dynamic_pressure(1.25,24)
+
+    print(dp)
+    print(f"New Drag:{drag.value(dp, area)}")
