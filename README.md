@@ -1,4 +1,4 @@
-# dataAnalysis
+# Modulos
 ## Variables Realizadas
 - Normal
 - Peso en el eje x
@@ -8,4 +8,4 @@
 - Pitch moment
 - Rolling Resistance
 - Drag Force
-- 
+-
