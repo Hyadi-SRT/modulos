@@ -1,3 +1,5 @@
+
+
 class Drag:
     def __init__(self, drag_coefficient, drag_area, dynamic_pressure) -> None:
         self._drag_coefficient = drag_coefficient
