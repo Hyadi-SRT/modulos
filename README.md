@@ -1,11 +1,16 @@
 # Modulos
 ## Variables Realizadas
-- Normal
-- Peso en el eje x
-- Fuerza de tracción
-- Presión Dinamica
-- Lift Force
-- Pitch moment
-- Rolling Resistance
-- Drag Force
--
+- [x] Presión Dinamica
+- [x] Rolling Resistance
+- [x] Ecuacion de arrastre
+- [x] Fuerza de tracción
+- [x] Drag de ventilacion
+- [ ] Reynolds
+- [x] Lift Force
+- [x] Pitch moment
+- [x] Gravedad
+- [ ] Force balance
+- [ ] Aceleracion
+- [ ] Carga regenerativa
+- [ ] Manejo de energia
+- [ ] Pendiente
