@@ -14,5 +14,5 @@ class Normal:
 			else:
 				return 0
 
-time = Normal(24, 0)
-print(str(time.calcula_fuerza_pendiente()))
+n = Normal(24, 25)
+print(str(n.calcula_fuerza_pendiente()))
