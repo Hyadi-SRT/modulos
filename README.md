@@ -9,7 +9,7 @@
 - [x] Lift Force
 - [x] Pitch moment
 - [x] Gravedad
-- [ ] Force balance
+- [x] Force balance
 - [ ] Aceleracion
 - [ ] Carga regenerativa
 - [ ] Manejo de energia
