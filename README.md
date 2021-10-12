@@ -5,7 +5,7 @@
 - [x] Ecuacion de arrastre
 - [x] Fuerza de tracción
 - [x] Drag de ventilacion
-- [ ] Reynolds
+- [x] Reynolds
 - [x] Lift Force
 - [x] Pitch moment
 - [x] Gravedad

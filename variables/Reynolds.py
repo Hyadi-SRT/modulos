@@ -8,19 +8,18 @@
 #   densidad: Kg/m3
 #   velocidad_relativa: m/s
 #   diametro: m
-#   viscosidad: Kg/m*s
-
+#   viscosidad_dinamica: Kg/m*s
 
 class Reynolds:
 
-    def __init__(self, densidad, velocidad_relativa, diametro, viscosidad):
+    def __init__(self, densidad, velocidad_relativa, diametro, viscosidad_dinamica):
         self.densidad = densidad
         self.velocidad_relativa = velocidad_relativa
         self.diametro = diametro
-        self.viscosidad = viscosidad
+        self.viscosidad_dinamica = viscosidad_dinamica
 
     def calcula_numero_reynolds(self):
-        return (self.densidad*self.velocidad_relativa*self.diametro) / self.viscosidad
+        return (self.densidad*self.velocidad_relativa*self.diametro) / self.viscosidad_dinamica
 
 
 rey = Reynolds(125, 45, 0.8, 75.2)
