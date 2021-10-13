@@ -13,4 +13,4 @@
 - [ ] Aceleracion
 - [x] Carga regenerativa
 - [ ] Manejo de energia
-- [ ] Pendiente
+- [x] Pendiente
