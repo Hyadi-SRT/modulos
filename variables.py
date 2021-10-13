@@ -31,6 +31,10 @@ def torque_motor(torque_wheel, efficiency_transmission, speed_reduction):
 def torque_wheel(drag_force,rolling_resistance,radius_wheel, weight_x):
     return radius_wheel*(abs(weight_x)-drag_force-rolling_resistance)
 
+
+def pendiente(x_1,y_1,x_2,y_2):
+    return(y_2 - y_1)/(x_2 - x_1)
+
 class RollingResistance:
     def __init__(self):
         self._coefficient = 0
