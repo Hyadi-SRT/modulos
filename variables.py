@@ -20,9 +20,19 @@ def lift_force(drag_area, dynamic_pressure, clift_coeficient):
 def pitch_moment(drag_area, dynamic_pressure, coefficient, Lw):
     return drag_area*dynamic_pressure*coefficient*Lw
 
+
+#Regenerative charge
+def regenerative_charge(torque_motor, rotational_speed, efficiency_motor, battery_voltage):
+    return (torque_motor*rotational_speed*efficiency_motor)/battery_voltage
+
+def torque_motor(torque_wheel, efficiency_transmission, speed_reduction):
+    return torque_wheel*efficiency_transmission/speed_reduction
+
+def torque_wheel(drag_force,rolling_resistance,radius_wheel, weight_x):
+    return radius_wheel*(abs(weight_x)-drag_force-rolling_resistance)
+
 class RollingResistance:
     def __init__(self):
-        self._total = 0
         self._coefficient = 0
 
     def coefficient(self) -> float:

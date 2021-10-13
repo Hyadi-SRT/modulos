@@ -1,4 +1,4 @@
-#Programa Reynpolds
+#Programa Reynolds
 #
 #Programa que calcula el numero de Reynolds a partir de los parametros
 #de densidad, velocidad relativa, diametro y voscosidad dinamica por medio de

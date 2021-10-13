@@ -11,6 +11,6 @@
 - [x] Gravedad
 - [x] Force balance
 - [ ] Aceleracion
-- [ ] Carga regenerativa
+- [x] Carga regenerativa
 - [ ] Manejo de energia
 - [ ] Pendiente
