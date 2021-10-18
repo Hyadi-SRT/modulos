@@ -10,7 +10,7 @@
 - [x] Pitch moment
 - [x] Gravedad
 - [x] Force balance
-- [ ] Aceleracion
+- [x] Aceleracion
 - [x] Carga regenerativa
 - [ ] Manejo de energia
 - [x] Pendiente
