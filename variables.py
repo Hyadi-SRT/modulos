@@ -1,39 +1,62 @@
 from math import radians, cos, sin
 
-def normal(angle, force):
-    angle = radians(angle)
-    return force*cos(angle)
+def normal(angle: float, weight: float) -> float:
+    # Calcular la normal de la fuerza de 
+    # gravedad que ejerce el auto sobre el 
+    # suelo
+    # Parametros:
+    #   angle : Radianes
+    #   weight: Newtons
+    return weight*cos(angle)
 
 def weight_x(angle, force):
-    angle = radians(angle)
+    #Calcular el peso que se opone a 
     return force*sin(angle)
 
-def tractive_force(torque, radio):
-    return torque*radio
+def tractive_force(torque_wheel, radio):
+    return torque_wheel*radio
 
 def dynamic_pressure(density, relative_velocity):
+
     return (density * relative_velocity**2)/2
 
 def lift_force(drag_area, dynamic_pressure, clift_coeficient):
+
     return  drag_area*dynamic_pressure*clift_coeficient
 
 def pitch_moment(drag_area, dynamic_pressure, coefficient, Lw):
+
     return drag_area*dynamic_pressure*coefficient*Lw
 
 
 #Regenerative charge
-def regenerative_charge(torque_motor, rotational_speed, efficiency_motor, battery_voltage):
+def regenerative_charge(torque_motor, rotational_speed,efficiency_motor, 
+    battery_voltage):
+
     return (torque_motor*rotational_speed*efficiency_motor)/battery_voltage
 
 def torque_motor(torque_wheel, efficiency_transmission, speed_reduction):
+
     return torque_wheel*efficiency_transmission/speed_reduction
 
 def torque_wheel(drag_force,rolling_resistance,radius_wheel, weight_x):
+
     return radius_wheel*(abs(weight_x)-drag_force-rolling_resistance)
 
 
 def pendiente(x_1,y_1,x_2,y_2):
+
     return(y_2 - y_1)/(x_2 - x_1)
+
+def reynolds(densidad, velocidad_relativa, diametro, viscosidad_dinamica):
+
+    return (densidad*velocidad_relativa*diametro) / viscosidad_dinamica
+
+def calcula_force_balance(drag_force,weight_x,rolling_resistance):
+
+		return drag_force + weight_x + rolling_resistance
+
+
 
 class RollingResistance:
     def __init__(self):
