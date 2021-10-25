@@ -9,27 +9,46 @@ def normal(angle: float, weight: float) -> float:
     #   weight: Newtons
     return weight*cos(angle)
 
-def weight_x(angle, force):
-    #Calcular el peso que se opone a 
+def weight_x(angle, force) -> float:
+    #Calcular el peso que se opone al movimiento
+    #Parametros:
+    #   angle : Radianes
+    #   force : Newtons
     return force*sin(angle)
 
-def tractive_force(torque_wheel, radio):
-    return torque_wheel*radio
+def tractive_force(torque, radio):
+    # Calcular la fuerza de traccion
+    #Parametros: 
+    #   torque : Newton-Metro
+    #   radio  : No sé si en cm o m
+    return torque*radio
 
 def dynamic_pressure(density, relative_velocity):
+    #Calcular la presion dinamica
+    #Parametros:
+    #   density : kg/m^3
+    #   relative_velocity : m/s 
 
     return (density * relative_velocity**2)/2
 
-def lift_force(drag_area, dynamic_pressure, clift_coeficient):
-
-    return  drag_area*dynamic_pressure*clift_coeficient
+def lift_force(drag_area, dynamic_pressure, lift_coeficient):
+    #Calcular la fuerza de elevacion
+    #Parametros:
+    #   drag_area : Metros cuadrados
+    #   dynamic_pressure : Pascales
+    #   lift_coeficient : -
+    return  drag_area*dynamic_pressure*lift_coeficient
 
 def pitch_moment(drag_area, dynamic_pressure, coefficient, Lw):
-
+    #Calcula el momento de cabeceo
+    #Parametros:
+    #   drag_area: Metros cuadrados
+    #   dynamic_pressure: Pascales
+    #   coefficient: - 
+    #   Lw: - 
     return drag_area*dynamic_pressure*coefficient*Lw
 
 
-#Regenerative charge
 def regenerative_charge(torque_motor, rotational_speed,efficiency_motor, 
     battery_voltage):
 
@@ -56,6 +75,8 @@ def calcula_force_balance(drag_force,weight_x,rolling_resistance):
 
 		return drag_force + weight_x + rolling_resistance
 
+def aceleration(tractive_force, drag_force, rolling_resistance, effective_mass):
+    return (tractive_force - drag_force - rolling_resistance) /effective_mass
 
 
 class RollingResistance:
